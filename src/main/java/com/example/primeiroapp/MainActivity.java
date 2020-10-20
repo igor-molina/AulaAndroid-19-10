@@ -19,12 +19,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void carregar(View view){
+
         numClicks += 1;
         TextView txtNumClick = findViewById(R.id.txtNumClicks);
         TextView txtView = findViewById(R.id.textResult);
-        int valor = new Random().nextInt(10);
-        txtView.setText("Número:" + valor);
-        txtNumClick.append("\nÚltimo número sorteado:" + valor + " // Número de sorteios: " + numClicks);
+        EditText txtEdit = findViewById(R.id.plnText);
+
+        String numEscolhido = txtEdit.getText().toString();
+
+        if (!numEscolhido.equals("")){
+            int valor = new Random().nextInt(10);
+            txtView.setText("Número:" + valor);
+            txtNumClick.append("\nNúmero escolhido: " +  numEscolhido + "\nÚltimo número sorteado:" + valor + "\nNúmero de sorteios: " + numClicks + "\n");
+            txtEdit.setText("");
+        }
+
 
     }
 }
